@@ -1,5 +1,5 @@
-import CreateSessionCard from "components/JoinSession/CreateSession";
-import JoinSessionCard from "components/SessionSelection/JoinSession";
+import CreateSessionCard from "/components/SessionSelection/CreateSession";
+import JoinSessionCard from "/components/SessionSelection/JoinSession";
 import React from "react";
 import { Col, Container, Navbar, Row } from "react-bootstrap";
 
