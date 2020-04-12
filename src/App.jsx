@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import store from "store/index";
 import { createBrowserHistory } from "history";
 import { Router, Switch, Route } from "react-router-dom";
+import DefaultLayout from "layouts/DefaultLayout";
 import SessionSelection from "pages/SessionSelection";
 import JoinSession from "pages/JoinSession";
 import './App.css';
@@ -15,8 +16,8 @@ function App() {
     <Provider store={store}>
 			<Router history={hist}>
 				<Switch>
-					<Route path="/join-session" component={JoinSession} />
-					<Route path="/" component={SessionSelection} />
+					<Route path="/join-session" component={DefaultLayout(JoinSession)} />
+					<Route path="/" component={DefaultLayout(SessionSelection)} />
 				</Switch>
 			</Router>
 		</Provider>
