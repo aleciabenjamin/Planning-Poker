@@ -6,6 +6,7 @@ import { Router, Switch, Route } from "react-router-dom";
 import DefaultLayout from "layouts/DefaultLayout";
 import SessionSelection from "pages/SessionSelection";
 import JoinSession from "pages/JoinSession";
+import CreateSession from "pages/CreateSession";
 import './App.css';
 
 const hist = createBrowserHistory();
@@ -16,6 +17,7 @@ function App() {
     <Provider store={store}>
 			<Router history={hist}>
 				<Switch>
+				<Route path="/create-session" component={DefaultLayout(CreateSession)} />
 					<Route path="/join-session" component={DefaultLayout(JoinSession)} />
 					<Route path="/" component={DefaultLayout(SessionSelection)} />
 				</Switch>
