@@ -1,9 +1,8 @@
-import CreateSessionCard from "components/SessionSelection/CreateSession";
-import JoinSessionCard from "components/SessionSelection/JoinSession";
 import React from "react";
-import { Col, Container, Navbar, Row } from "react-bootstrap";
+import { Container, Row, Col, Navbar } from "react-bootstrap";
+import JoinSessionForm from "components/JoinSession/Form";
 
-const SessionSelection = () => {
+const JoinSession = () => {
   return (
     <>
       <Navbar bg="dark" expand="lg">
@@ -14,11 +13,8 @@ const SessionSelection = () => {
       </Navbar>
       <Container className="h-100">
         <Row className="align-items-center h-100 mt-5">
-          <Col sm="6">
-            <CreateSessionCard />
-          </Col>
-          <Col sm="6">
-            <JoinSessionCard />
+          <Col sm="6" className="mx-auto">
+            <JoinSessionForm />
           </Col>
         </Row>
       </Container>
@@ -26,4 +22,4 @@ const SessionSelection = () => {
   );
 };
 
-export default SessionSelection;
+export default JoinSession;

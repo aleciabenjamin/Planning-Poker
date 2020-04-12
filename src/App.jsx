@@ -4,6 +4,7 @@ import store from "store/index";
 import { createBrowserHistory } from "history";
 import { Router, Switch, Route } from "react-router-dom";
 import SessionSelection from "pages/SessionSelection";
+import JoinSession from "pages/JoinSession";
 import './App.css';
 
 const hist = createBrowserHistory();
@@ -14,7 +15,8 @@ function App() {
     <Provider store={store}>
 			<Router history={hist}>
 				<Switch>
-					<Route path='/' component={SessionSelection} />
+					<Route path="/join-session" component={JoinSession} />
+					<Route path="/" component={SessionSelection} />
 				</Switch>
 			</Router>
 		</Provider>
