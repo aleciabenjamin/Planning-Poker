@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, Container, Row, Col } from "react-bootstrap";
+import { Card, Button, Container, Row, Col, Navbar } from "react-bootstrap";
 
 const CreateSessionCard = () => {
   return (
@@ -31,21 +31,28 @@ const JoinSessionCard = () => {
   );
 };
 
-class SessionSelection extends Component {
-  render() {
+const SessionSelection = () => {
     return (
-      <Container className="h-100">
-        <Row className="align-items-center h-100">
-          <Col sm="6">
-            <CreateSessionCard />
-          </Col>
-          <Col sm="6">
-            <JoinSessionCard />
-          </Col>
-        </Row>
-      </Container>
+			<>
+				<Navbar bg="dark" expand="lg">
+					<Navbar.Brand href="/" className="text-light">
+						Planning Poker
+					</Navbar.Brand>
+					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+				</Navbar>
+      	<Container className="h-100">
+        	<Row className="align-items-center h-100 mt-5">
+          	<Col sm="6">
+            	<CreateSessionCard />
+          	</Col>
+          	<Col sm="6">
+            	<JoinSessionCard />
+          	</Col>
+        	</Row>
+      	</Container>
+			</>
     );
   }
-}
+
 
 export default SessionSelection;
