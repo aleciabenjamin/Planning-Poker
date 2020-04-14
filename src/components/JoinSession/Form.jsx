@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 
-const JoinSessionForm = () => {
+const JoinSessionForm = ({ history }) => {
+  const [userName, handleUserName] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    history.push("polling");
+  };
   return (
     <Card className="text-center">
       <Card.Header as="h5">Join Session</Card.Header>
       <Card.Body>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Your Name</Form.Label>
             <Form.Control
+							required
               type="text"
               placeholder="Enter your name"
-              className="text-center"
+							className="text-center"
+							value={userName}
+							onChange={(event) => handleUserName(event.target.value)}
             />
           </Form.Group>
           <Button variant="primary" type="submit">

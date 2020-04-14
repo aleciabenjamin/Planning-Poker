@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "store/index";
-import { createBrowserHistory } from "history";
+import createBrowserHistory from "history/createBrowserHistory";
 import { Router, Switch, Route } from "react-router-dom";
 import DefaultLayout from "layouts/DefaultLayout";
 import SessionSelection from "pages/SessionSelection";
@@ -11,7 +11,6 @@ import Polling from "pages/Polling";
 import "./App.css";
 
 const hist = createBrowserHistory();
-hist.listen();
 
 function App() {
   return (
