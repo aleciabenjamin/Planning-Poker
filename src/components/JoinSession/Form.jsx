@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 
-const JoinSessionForm = ({ history }) => {
+const JoinSessionForm = ({ history, sessionId, setUserName }) => {
   const [userName, handleUserName] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    history.push("polling");
+    if (userName !== "") {
+      setUserName(userName);
+      history.push(`/polling/${sessionId}`);
+    }
   };
   return (
     <Card className="text-center">
@@ -16,12 +19,12 @@ const JoinSessionForm = ({ history }) => {
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Your Name</Form.Label>
             <Form.Control
-							required
+              required
               type="text"
               placeholder="Enter your name"
-							className="text-center"
-							value={userName}
-							onChange={(event) => handleUserName(event.target.value)}
+              className="text-center"
+              value={userName}
+              onChange={(event) => handleUserName(event.target.value)}
             />
           </Form.Group>
           <Button variant="primary" type="submit">
