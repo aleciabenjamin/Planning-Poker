@@ -19,10 +19,10 @@ function App() {
         <Switch>
           <Route path="/polling" component={DefaultLayout(Polling)} />
           <Route
-            path="/create-session"
+            path="/create-session/:sessionId"
             component={DefaultLayout(CreateSession)}
           />
-          <Route path="/join-session" component={DefaultLayout(JoinSession)} />
+          <Route path="/join-session/:sessionId" component={DefaultLayout(JoinSession)} />
           <Route path="/" component={DefaultLayout(SessionSelection)} />
         </Switch>
       </Router>

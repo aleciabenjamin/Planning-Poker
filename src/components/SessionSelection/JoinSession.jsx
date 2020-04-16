@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 
-const JoinSessionCard = ({ history }) => {
+const JoinSessionCard = ({ history, setSessionId }) => {
   const [sessionId, handleSessionId] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
     if (sessionId !== "") {
-      history.push("/join-session");
+			setSessionId(sessionId);
+      history.push(`/join-session/${sessionId}`);
     }
   };
   return (

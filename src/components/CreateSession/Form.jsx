@@ -41,7 +41,7 @@ const CreateSessionForm = ({ history }) => {
             />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Join
+            Start
           </Button>
         </Form>
       </Card.Body>

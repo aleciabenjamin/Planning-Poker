@@ -1,4 +1,4 @@
-import { SET_POLL_TYPE } from "store/actions/types";
+import { SET_POLL_TYPE, SET_SESSION_ID } from "store/actions/types";
 
 const initialState = {
   pollType: null,
@@ -10,8 +10,8 @@ function reducer(state = initialState, action) {
     case SET_POLL_TYPE:
       state = { ...state, pollType: action.pollType };
       break;
-    case set_session_id:
-      state + { ...state, sessionId: action.sesionId };
+    case SET_SESSION_ID:
+      state = { ...state, sessionId: action.sesionId };
       break;
     default:
   }
