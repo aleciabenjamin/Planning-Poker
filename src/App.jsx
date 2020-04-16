@@ -17,7 +17,7 @@ function App() {
     <Provider store={store}>
       <Router history={hist}>
         <Switch>
-          <Route path="/polling" component={DefaultLayout(Polling)} />
+          <Route path="/polling/:sessionId" component={DefaultLayout(Polling)} />
           <Route
             path="/create-session/:sessionId"
             component={DefaultLayout(CreateSession)}

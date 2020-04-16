@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 
-const CreateSessionForm = ({ history }) => {
+const CreateSessionForm = ({ history, sessionId, setUserName, setSessionName }) => {
   const [sessionName, handleSessionName] = useState();
   const [userName, handleUserName] = useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (sessionName !== "" && userName !== "") {
-      history.push("polling");
+			setUserName(userName);
+			setSessionName(sessionName);
+      history.push(`/polling/${sessionId}`);
     }
   };
   return (
