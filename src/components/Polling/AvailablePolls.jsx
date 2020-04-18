@@ -2,7 +2,7 @@ import React from "react";
 import { Row } from "react-bootstrap";
 import Card from "components/Polling/Card";
 
-const SelectedPollSection = () => {
+const AvailablePolls = () => {
   return (
     <Row className="border rounded px-2 py-3">
       <Card value="0" />
@@ -19,4 +19,4 @@ const SelectedPollSection = () => {
   );
 };
 
-export default SelectedPollSection;
+export default AvailablePolls;
