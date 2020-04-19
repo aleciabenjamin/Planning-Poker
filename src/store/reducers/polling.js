@@ -1,10 +1,11 @@
-import { SET_POLL_TYPE, SET_SESSION_ID, SET_SESSION_NAME, SET_USER_NAME } from "store/actions/types";
+import { SET_POLL_TYPE, SET_SESSION_ID, SET_SESSION_NAME, SET_USER_NAME, SET_POLLS } from "store/actions/types";
 
 const initialState = {
   pollType: null,
 	sessionId: null,
 	session_name: null,
 	userName: null,
+	polls: [],
 
 };
 
@@ -14,7 +15,7 @@ function reducer(state = initialState, action) {
       state = { ...state, pollType: action.pollType };
       break;
     case SET_SESSION_ID:
-      state = { ...state, sessionId: action.sesionId };
+      state = { ...state, sessionId: action.sessionId };
 			break;
 		case SET_SESSION_NAME:
 			state = { ...state, sessionName: action.sessioName };
@@ -22,6 +23,8 @@ function reducer(state = initialState, action) {
 		case SET_USER_NAME:
 			state = { ...state, userName: action.userName };
 			break;
+		case SET_POLLS:
+			state = { ...state, polls: action.polls };
     default:
   }
   return state;
