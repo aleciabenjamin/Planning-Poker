@@ -45,7 +45,7 @@ class CreateSessionCard extends Component {
                 value={pollType}
               >
                 <option value="fibonacci">Fibonacci</option>
-                <option value="fibonacci">T-Shirt</option>
+                <option value="t-shirt">T-Shirt</option>
               </Form.Control>
             </Form.Group>
             <Button variant="primary" type="submit">

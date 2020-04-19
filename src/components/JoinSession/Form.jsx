@@ -20,7 +20,8 @@ const JoinSessionForm = ({ history, sessionId, setUserName }) => {
             <Form.Label>Your Name</Form.Label>
             <Form.Control
               required
-              type="text"
+							type="text"
+							autoComplete={false}
               placeholder="Enter your name"
               className="text-center"
               value={userName}

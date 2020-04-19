@@ -7,9 +7,9 @@
 <polygon fill="#CD6F28" points="-5.4,124.3 9.8,111.9 15.1,123.2 27.8,94.5 47.3,122.5 61.5,110.8 69.7,122.2 82.4,97 96.2,117.2 
 	103,104.1 117.8,124.6 132,83.5 137.3,108.7 144.4,104.1 155.4,134.9 173.2,112.2 173.2,255.3 -5.4,255.3 "/>
 <circle fill="#BA3033" cx="20.8" cy="39.2" r="2.6"/>
-<text transform="matrix(1 0 0 1 11.8434 29.7172)" fill="#220E0A" font-family="'RobotoSlab-Regular'" font-size="20">¿?</text>
+<text transform="matrix(1 0 0 1 11.8434 29.7172)" fill="#220E0A" font-family="'RobotoSlab-Regular'" font-size="20">0</text>
 <circle fill="#BA3033" cx="146.4" cy="210.3" r="2.6"/>
-<text transform="matrix(-1 0 0 -1 155.4042 219.7293)" fill="#220E0A" font-family="'RobotoSlab-Regular'" font-size="20">¿?</text>
+<text transform="matrix(-1 0 0 -1 155.4042 219.7293)" fill="#220E0A" font-family="'RobotoSlab-Regular'" font-size="20">0</text>
 <g>
 	<g>
 		<polygon fill="#220E0A" points="93.3,106.2 96.1,107.9 92.9,107.4 		"/>
@@ -84,6 +84,7 @@
 		<path fill="#220E0A" d="M154.1,159.3l-0.4,0.3c1.6,2,2.7,3.6,2.7,3.6L154.1,159.3z"/>
 	</g>
 </g>
+<text transform="matrix(1 0 0 1 35.0925 176.6375)" font-family="'RobotoSlab-Thin'" font-size="140">0</text>
 <path opacity="0.3" fill="#220E0A" d="M145.2,40.8l-6.9-10.7l-9.1,6c0,0,0,0,0,0l5.5-7.9l-8.7-5.9l-0.5-0.4c0,0,0.2,0.2,0.5,0.4
 	c0.3,0.3,0.7,0.7,0.9,1c0.7,1.1,0.5,2.5-0.6,3.3c-0.1,0.1-0.3,0.2-0.4,0.2v0l-0.7,0.1l0.7,0.2c0.3,0.1,0.5,0.3,0.7,0.6
 	c0.6,0.8,0.4,2-0.4,2.6l-0.6,0.1l0.7,0.2c0.2,0.1,1.4,0.5,1.5,1.6c0.1,0.6,0,1.6-0.1,2.3c-1.9-2.3-4-4.8-5.2-6.9l-1.4-2.8l-0.5,0.7

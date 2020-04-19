@@ -7,6 +7,8 @@ const SelectedPollSection = ({ pollType, setPolls }) => {
     <Row className="border rounded px-2 py-3">
       {pollType === "fibonacci" && (
         <>
+          <Card value="0" handleClick={setPolls} />
+          <Card value="0.5" handleClick={setPolls} />
           <Card value="1" handleClick={setPolls} />
           <Card value="2" handleClick={setPolls} />
           <Card value="3" handleClick={setPolls} />
@@ -16,11 +18,10 @@ const SelectedPollSection = ({ pollType, setPolls }) => {
           <Card value="20" handleClick={setPolls} />
           <Card value="40" handleClick={setPolls} />
           <Card value="100" handleClick={setPolls} />
-          <Card value="?" handleClick={setPolls} />
-          <Card value="?" handleClick={setPolls} />
+          <Card value="101" handleClick={setPolls} />
         </>
       )}
-      ;
+      
       {pollType === "t-shirt" && (
         <>
           <Card value="xs" handleClick={setPolls} />

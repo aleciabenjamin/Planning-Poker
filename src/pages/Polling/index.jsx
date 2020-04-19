@@ -14,7 +14,7 @@ const Polling = ({ pollType, userName, sessionId, polls, setPolls }) => {
   return (
     <>
       <Row className="justify-content-end h-100 mt-5">
-        <Col sm="4">
+        <Col sm="3">
           <PollingLink sessionId={sessionId} />
         </Col>
       </Row>

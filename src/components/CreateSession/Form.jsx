@@ -22,7 +22,8 @@ const CreateSessionForm = ({ history, sessionId, setUserName, setSessionName }) 
             <Form.Label>Session Name</Form.Label>
             <Form.Control
               required
-              type="text"
+							type="text"
+							autoComplete={false}
               name="sessionName"
               placeholder="Enter session name"
               className="text-center"
@@ -34,7 +35,8 @@ const CreateSessionForm = ({ history, sessionId, setUserName, setSessionName }) 
             <Form.Label>Your Name</Form.Label>
             <Form.Control
               required
-              type="text"
+							type="text"
+							autoComplete={false}
               name="userName"
               placeholder="Enter your name"
               className="text-center"
