@@ -24,7 +24,6 @@ const JoinSessionCard = ({ history, setSessionId }) => {
             <Form.Control
               required
 							type="text"
-							autoComplete={false}
               placeholder="Enter Session ID"
               className="text-center"
               value={sessionId}

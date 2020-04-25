@@ -18,6 +18,7 @@ import medium from "assets/pokerCards/md - planning poker_Squeaking by.svg";
 import large from "assets/pokerCards/lg - planning poker_Eat a brownie.svg";
 import xlarge from "assets/pokerCards/xl - planning poker_Low hanging fruit.svg";
 import xxlarge from "assets/pokerCards/xxl - planning poker_It ain't rocket science.svg";
+import unknown from "assets/pokerCards/Cover option.svg";
 
 const CardMapping = {
   "0": Zero,
@@ -38,23 +39,32 @@ const CardMapping = {
   lg: large,
   xl: xlarge,
   xxl: xxlarge,
+  unknown: unknown,
 };
 
-const Card = ({ value, handleClick }) => {
+const Card = ({ value, label, handleClick }) => {
   if (value && CardMapping[value.toString()])
     return (
       <Col sm="2" className="text-center mb-2">
-        <BSCard>
+        <BSCard className="bg-transparent border-0 text-light">
           <BSCard.Body
             className="p-0 cursor-pointer"
             onClick={() => handleClick(value)}
           >
-            <img src={CardMapping[value]} alt="value" />
+            {label !== "" && (
+              <p className="text-light mb-0 font-weight-bold"></p>
+            )}
+            <img src={CardMapping[value]} alt="value" className="rounded" />
           </BSCard.Body>
         </BSCard>
       </Col>
     );
   else return <></>;
+};
+
+Card.defaultProps = {
+  label: "",
+  handleClick: (value) => {},
 };
 
 export default Card;

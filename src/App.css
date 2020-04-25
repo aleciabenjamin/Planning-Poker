@@ -40,3 +40,8 @@
 .cursor-pointer {
   cursor: pointer;
 }
+
+.members-list {
+	height: 60vh;
+	overflow-y: auto;
+}

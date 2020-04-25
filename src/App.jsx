@@ -4,6 +4,7 @@ import store from "store/index";
 import createBrowserHistory from "history/createBrowserHistory";
 import { Router, Switch, Route } from "react-router-dom";
 import DefaultLayout from "layouts/DefaultLayout";
+import AuthLayout from "layouts/AuthLayout";
 import SessionSelection from "pages/SessionSelection";
 import JoinSession from "pages/JoinSession";
 import CreateSession from "pages/CreateSession";
@@ -17,10 +18,10 @@ function App() {
     <Provider store={store}>
       <Router history={hist}>
         <Switch>
-          <Route path="/polling/:sessionId" component={DefaultLayout(Polling)} />
+          <Route path="/polling/:sessionId" component={AuthLayout(Polling)} />
           <Route
             path="/create-session/:sessionId"
-            component={DefaultLayout(CreateSession)}
+            component={AuthLayout(CreateSession)}
           />
           <Route path="/join-session/:sessionId" component={DefaultLayout(JoinSession)} />
           <Route path="/" component={DefaultLayout(SessionSelection)} />
