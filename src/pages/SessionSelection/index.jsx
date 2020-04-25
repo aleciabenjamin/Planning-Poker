@@ -5,6 +5,7 @@ import CreateSessionCard from "components/SessionSelection/CreateSession";
 import JoinSessionCard from "components/SessionSelection/JoinSession";
 import { Col, Row } from "react-bootstrap";
 
+
 const SessionSelection = ({ history, setPollType, setSessionId }) => {
   return (
     <Row className="align-items-center h-100 mt-5">

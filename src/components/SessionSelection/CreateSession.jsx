@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import uuid from "uuid/v4";
 import { Card, Button, Form } from "react-bootstrap";
+import { UndrawStatistics } from 'react-undraw-illustrations';
 
 class CreateSessionCard extends Component {
   constructor(props) {
@@ -18,10 +19,10 @@ class CreateSessionCard extends Component {
   };
 
   onSubmit = (e) => {
-		e.preventDefault();
-		const sessionId = uuid();
-		this.props.setPollType(this.state.pollType);
-		this.props.setSessionId(sessionId);
+    e.preventDefault();
+    const sessionId = uuid();
+    this.props.setPollType(this.state.pollType);
+    this.props.setSessionId(sessionId);
     this.props.history.push(`/create-session/${sessionId}`);
   };
 
@@ -32,10 +33,7 @@ class CreateSessionCard extends Component {
         <Card.Header as="h5">Create Session</Card.Header>
         <Card.Body>
           <div className="d-block mb-2">
-            <img
-              src="http://via.placeholder.com/200x200"
-              alt="create session"
-            />
+            <UndrawStatistics primaryColor="#6c68fb" height="250px" />
           </div>
           <Form onSubmit={this.onSubmit}>
             <Form.Group controlId="sessionId">
