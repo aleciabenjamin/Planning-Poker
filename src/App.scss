@@ -1,0 +1,50 @@
+body {
+  font-family: "Architects Daughter", cursive;
+  background-image: url("https://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-56.jpg");
+  background-position: center;
+  background-repeat: repeat;
+}
+
+.logo {
+  align-items: center;
+}
+nav {
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+      color: #6e6160;
+    }
+  }
+  // &::after {
+  //   background-position: right center;
+  //   background-repeat: no-repeat;
+  //   content: "";
+  //   height: 129px;
+  //   position: absolute;
+  //   bottom: -64px;
+  //   right: 32px;
+  //   width: 290px;
+  //   z-index: 99;
+  // }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.members-list {
+	height: 60vh;
+	overflow-y: auto;
+}
+
+// .card-header {
+// 	background-color: rgb(248, 187, 154);
+// }
+
+.btn-primary {
+  background-color:#D1BEC4 !important;
+  border-color: #F5DEE6 !important;
+  min-width: 100px;
+}
+

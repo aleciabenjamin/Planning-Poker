@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
 
 const MembersList = ({ polls }) => {
   let usersList = [];

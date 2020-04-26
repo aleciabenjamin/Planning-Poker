@@ -25,7 +25,8 @@ function reducer(state = initialState, action) {
 			break;
 		case SET_POLLS:
 			state = { ...state, polls: action.polls };
-    default:
+			break;
+		default:
   }
   return state;
 }

@@ -9,7 +9,7 @@ import SessionSelection from "pages/SessionSelection";
 import JoinSession from "pages/JoinSession";
 import CreateSession from "pages/CreateSession";
 import Polling from "pages/Polling";
-import "./App.css";
+import "./App.scss";
 
 const hist = createBrowserHistory();
 
@@ -23,7 +23,10 @@ function App() {
             path="/create-session/:sessionId"
             component={AuthLayout(CreateSession)}
           />
-          <Route path="/join-session/:sessionId" component={DefaultLayout(JoinSession)} />
+          <Route
+            path="/join-session/:sessionId"
+            component={DefaultLayout(JoinSession)}
+          />
           <Route path="/" component={DefaultLayout(SessionSelection)} />
         </Switch>
       </Router>
