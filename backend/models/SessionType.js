@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   SessionType.associate = function (models) {
     SessionType.hasMany(models.Session, {
-      foreignKey: "sessionId",
+      foreignKey: "sessionTypeId",
       onDelete: "CASCADE",
     });
   };
