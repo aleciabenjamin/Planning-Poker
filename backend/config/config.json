@@ -1,10 +1,11 @@
 {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "database_development",
+    "username": "alecia",
+    "password": "",
+    "database": "ppoker",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+		"dialect": "postgres",
+		"port": "5432",
     "operatorsAliases": false
   },
   "test": {
