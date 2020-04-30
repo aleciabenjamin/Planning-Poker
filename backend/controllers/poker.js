@@ -1,10 +1,10 @@
 var { Session } = require("../models");
 
 const saveSession = (req, res, next) => {
-  console.log(req.body);
+	console.log(req.body);
   return Session.create(req.body)
     .then((data) => {
-      res.send(data);
+      return res.json(data);
     })
     .catch((err) => {
       res.status(500).send({
