@@ -12,12 +12,12 @@ describe.only("Poker", () => {
     const firstName = faker.name.firstName();
     const company = faker.company.companyName();
 
-    const session = models.SessionType.findOne({
+    models.SessionType.findOne({
       where: { title: "Fibonacci" },
     }).then((session) => {
       chai
         .request(app)
-				.post("/poker/")
+        .post("/poker/")
         .send({
           title: company,
           creatorName: firstName,
@@ -32,5 +32,38 @@ describe.only("Poker", () => {
           done();
         });
     });
+  });
+  it("Fetch Session", (done) => {
+    const { Session, SessionType } = models;
+    const sessionType = { title: "T-Shirts" };
+    let session = {
+      title: faker.company.companyName(),
+			creatorName: faker.name.firstName(),
+			uuid: uuid(),
+    };
+    let sessionId = -1;
+    SessionType.findOne({
+      where: sessionType,
+    })
+      .then((resp) => {
+        session = {
+          ...session,
+          sessionTypeId: resp.id,
+        };
+        sessionId = resp.id;
+        return Session.create(session);
+      })
+      .then((resp) => {
+        chai
+          .request(app)
+          .get(`/poker/${resp.id}`)
+          .end((err, res) => {
+            expect(res).to.have.status(200);
+            expect(res.body.creatorName).to.equal(session.creatorName);
+            expect(res.body.title).to.equal(session.title);
+            expect(res.body.sessionTypeId).to.equal(sessionId);
+            done();
+          });
+      });
   });
 });
