@@ -33,7 +33,42 @@ describe.only("Poker", () => {
         });
     });
   });
+
   it("Fetch Session", (done) => {
+    const { Session, SessionType } = models;
+    const sessionType = { title: "T-Shirts" };
+    let session = {
+      title: faker.company.companyName(),
+      creatorName: faker.name.firstName(),
+      uuid: uuid(),
+    };
+    let sessionId = -1;
+    SessionType.findOne({
+      where: sessionType,
+    })
+      .then((resp) => {
+        session = {
+          ...session,
+          sessionTypeId: resp.id,
+        };
+        sessionId = resp.id;
+        return Session.create(session);
+      })
+      .then((resp) => {
+        chai
+          .request(app)
+          .get(`/poker/${resp.id}`)
+          .end((err, res) => {
+            expect(res).to.have.status(200);
+            expect(res.body.creatorName).to.equal(session.creatorName);
+            expect(res.body.title).to.equal(session.title);
+            expect(res.body.sessionTypeId).to.equal(sessionId);
+            done();
+          });
+      });
+  });
+
+  it("Fetch Session by uuid", (done) => {
     const { Session, SessionType } = models;
     const sessionType = { title: "T-Shirts" };
     let session = {
@@ -56,7 +91,7 @@ describe.only("Poker", () => {
       .then((resp) => {
         chai
           .request(app)
-          .get(`/poker/${resp.id}`)
+          .get(`/poker/uuid/${session.uuid}`)
           .end((err, res) => {
             expect(res).to.have.status(200);
             expect(res.body.creatorName).to.equal(session.creatorName);

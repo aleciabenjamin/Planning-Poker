@@ -24,11 +24,32 @@ const getSession = (req, res, next) => {
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the session",
+          err.message || "Some error occurred while fetching the session",
       });
     });
 };
+
+const getSessionByUuid = (req, res, next) => {
+  return Session.findOne({
+    where: {
+      uuid: req.params.uuid,
+		},
+		include: [{ model: SessionType }],
+  })
+    .then((data) => {
+      return res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while fetching the session by uuid",
+      });
+    });
+};
+
 module.exports = {
   saveSession,
   getSession,
+  getSessionByUuid,
 };
