@@ -73,8 +73,8 @@ describe.only("Poker", () => {
     const sessionType = { title: "T-Shirts" };
     let session = {
       title: faker.company.companyName(),
-			creatorName: faker.name.firstName(),
-			uuid: uuid(),
+      creatorName: faker.name.firstName(),
+      uuid: uuid(),
     };
     let sessionId = -1;
     SessionType.findOne({
@@ -100,5 +100,69 @@ describe.only("Poker", () => {
             done();
           });
       });
+  });
+
+  it("Save multiple session polls", (done) => {
+    const pollData = () => {
+      return {
+        userName: faker.name.firstName(),
+        poll: faker.random.arrayElement(["XS", "S", "M", "L", "XL", "XXL"]),
+      };
+    };
+    const sessionType = { title: "T-Shirts" };
+    let session = {
+      title: faker.company.companyName(),
+			creatorName: faker.name.firstName(),
+			uuid: uuid(),
+    };
+    let sessionId = -1;
+    const payload = [pollData(), pollData(), pollData()];
+    const pollToSession = (sessionId, data) => {
+      return new Promise((resolve, reject) => {
+        return chai
+          .request(app)
+          .post(`/poker/${sessionId}/poll`)
+          .send(data)
+          .then((res) => {
+            return resolve(res);
+          });
+      });
+    };
+
+    const { Session, SessionType } = models;
+    SessionType.findOne({
+      where: sessionType,
+    })
+      .then((resp) => {
+        session = {
+          ...session,
+          sessionTypeId: resp.id,
+        };
+        sessionId = resp.id;
+        return Session.create(session);
+      })
+      .then((resp) => {
+        return Promise.all([
+          pollToSession(resp.id, payload[0]),
+          pollToSession(resp.id, payload[1]),
+          pollToSession(resp.id, payload[2]),
+        ]);
+			})
+			.then((res) => {
+				expect(res.length).to.equal(3);
+				
+				expect(res[0]).to.have.status(200);
+				expect(res[0].body.userName).to.equal(payload[0].userName);
+				expect(res[0].body.creatorName).to.equal(payload[0].creatorName);
+
+				expect(res[1]).to.have.status(200);
+        expect(res[1].body.userName).to.equal(payload[1].userName);
+				expect(res[1].body.creatorName).to.equal(payload[1].creatorName);
+
+				expect(res[2]).to.have.status(200);
+        expect(res[2].body.userName).to.equal(payload[2].userName);
+        expect(res[2].body.creatorName).to.equal(payload[2].creatorName);
+        done();
+			})
   });
 });

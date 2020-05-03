@@ -1,4 +1,4 @@
-var { Session, SessionType } = require("../models");
+var { Session, SessionType, Polling } = require("../models");
 
 const saveSession = (req, res, next) => {
   console.log(req.body);
@@ -33,8 +33,8 @@ const getSessionByUuid = (req, res, next) => {
   return Session.findOne({
     where: {
       uuid: req.params.uuid,
-		},
-		include: [{ model: SessionType }],
+    },
+    include: [{ model: SessionType }],
   })
     .then((data) => {
       return res.json(data);
@@ -48,8 +48,36 @@ const getSessionByUuid = (req, res, next) => {
     });
 };
 
+const savePoll = (req, res, next) => {
+  const { userName, poll } = req.body;
+  const { sessionId } = req.params;
+  const where = {
+    userName,
+    sessionId,
+  };
+
+  return Polling.findOne({ where })
+    .then((inst) => {
+      if (inst) {
+        return inst.update({ poll });
+      } else {
+        return Polling.create({ userName, poll, sessionId });
+      }
+    })
+    .then((resp) => {
+      return res.json(resp);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while creating the session",
+      });
+    });
+};
+
 module.exports = {
   saveSession,
   getSession,
   getSessionByUuid,
+  savePoll,
 };
