@@ -49,28 +49,36 @@ const getSessionByUuid = (req, res, next) => {
 };
 
 const savePoll = (req, res, next) => {
-  const { userName, poll } = req.body;
-  const { sessionId } = req.params;
-  const where = {
-    userName,
-    sessionId,
+  const payload = {
+    userName: req.body.userName,
+    poll: req.body.poll,
+    sessionId: req.params.sessionId,
   };
-
-  return Polling.findOne({ where })
-    .then((inst) => {
-      if (inst) {
-        return inst.update({ poll });
-      } else {
-        return Polling.create({ userName, poll, sessionId });
-      }
-    })
-    .then((resp) => {
-      return res.json(resp);
+  return Polling.create(payload)
+    .then((data) => {
+      return res.json(data);
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the session",
+          err.message || "Some error occurred while creating the Session.",
+      });
+    });
+};
+
+
+const getPolls = (req, res, next) => {
+  return Polling.findAll({
+    where: {
+      sessionId: req.params.sessionId,
+    },
+  })
+    .then((data) => {
+      return res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while fetching the polls",
       });
     });
 };
@@ -80,4 +88,5 @@ module.exports = {
   getSession,
   getSessionByUuid,
   savePoll,
+  getPolls,
 };

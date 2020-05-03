@@ -112,8 +112,8 @@ describe.only("Poker", () => {
     const sessionType = { title: "T-Shirts" };
     let session = {
       title: faker.company.companyName(),
-			creatorName: faker.name.firstName(),
-			uuid: uuid(),
+      creatorName: faker.name.firstName(),
+      uuid: uuid(),
     };
     let sessionId = -1;
     const payload = [pollData(), pollData(), pollData()];
@@ -147,22 +147,79 @@ describe.only("Poker", () => {
           pollToSession(resp.id, payload[1]),
           pollToSession(resp.id, payload[2]),
         ]);
-			})
-			.then((res) => {
-				expect(res.length).to.equal(3);
-				
-				expect(res[0]).to.have.status(200);
-				expect(res[0].body.userName).to.equal(payload[0].userName);
-				expect(res[0].body.creatorName).to.equal(payload[0].creatorName);
+      })
+      .then((res) => {
+        expect(res.length).to.equal(3);
 
-				expect(res[1]).to.have.status(200);
+        expect(res[0]).to.have.status(200);
+        expect(res[0].body.userName).to.equal(payload[0].userName);
+        expect(res[0].body.creatorName).to.equal(payload[0].creatorName);
+
+        expect(res[1]).to.have.status(200);
         expect(res[1].body.userName).to.equal(payload[1].userName);
-				expect(res[1].body.creatorName).to.equal(payload[1].creatorName);
+        expect(res[1].body.creatorName).to.equal(payload[1].creatorName);
 
-				expect(res[2]).to.have.status(200);
+        expect(res[2]).to.have.status(200);
         expect(res[2].body.userName).to.equal(payload[2].userName);
         expect(res[2].body.creatorName).to.equal(payload[2].creatorName);
         done();
-			})
+      });
+  });
+
+  it("Fetch all session polls", (done) => {
+    const pollData = () => {
+      return {
+        userName: faker.name.firstName(),
+        poll: faker.random.arrayElement(["XS", "S", "M", "L", "XL", "XXL"]),
+      };
+    };
+    const sessionType = { title: "T-Shirts" };
+    let session = {
+      title: faker.company.companyName(),
+			creatorName: faker.name.firstName(),
+			uuid: uuid(),
+    };
+    let sessionId = -1;
+    const payload = [pollData(), pollData(), pollData()];
+    const pollToSession = (sessionId, data) =>
+      Polling.create({ ...data, sessionId });
+
+    const { Session, SessionType, Polling } = models;
+    SessionType.findOne({
+      where: sessionType,
+    })
+      .then((resp) => {
+        session = {
+          ...session,
+          sessionTypeId: resp.id,
+        };
+        return Session.create(session);
+      })
+      .then((resp) => {
+        sessionId = resp.id;
+        return Promise.all([
+          pollToSession(resp.id, payload[0]),
+          pollToSession(resp.id, payload[1]),
+          pollToSession(resp.id, payload[2]),
+        ]);
+      })
+      .then((res) => {
+        chai
+          .request(app)
+          .get(`/poker/${sessionId}/poll`)
+          .end((err, res) => {
+            console.log(res.body);
+            expect(res).to.have.status(200);
+            expect(res.body.length).to.equal(3);
+
+            expect(res.body[0].userName).to.equal(payload[0].userName);
+            expect(res.body[0].creatorName).to.equal(payload[0].creatorName);
+            expect(res.body[1].userName).to.equal(payload[1].userName);
+            expect(res.body[1].creatorName).to.equal(payload[1].creatorName);
+            expect(res.body[2].userName).to.equal(payload[2].userName);
+            expect(res.body[2].creatorName).to.equal(payload[2].creatorName);
+            done();
+          });
+      });
   });
 });
