@@ -5,7 +5,8 @@ var {
   getSession,
   getSessionByUuid,
   savePoll,
-  getPolls,
+	getPolls,
+	getSessionTypes,
 } = require("../controllers/poker");
 
 router.route("/").post(saveSession);
@@ -15,5 +16,7 @@ router.route("/:id").get(getSession);
 router.route("/uuid/:uuid").get(getSessionByUuid);
 
 router.route("/:sessionId/poll").post(savePoll).get(getPolls);
+
+router.route("/sessionTypes").get(getSessionTypes);
 
 module.exports = router;

@@ -60,12 +60,10 @@ const savePoll = (req, res, next) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating the Session.",
+        message: err.message || "Some error occurred while saving the Session.",
       });
     });
 };
-
 
 const getPolls = (req, res, next) => {
   return Polling.findAll({
@@ -83,10 +81,27 @@ const getPolls = (req, res, next) => {
     });
 };
 
+const getSessionTypes = (req, res, next) => {
+  return SessionType.findAll({
+    attributes: ["id", "title"],
+  })
+    .then((data) => {
+      return res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while fetching the session types.",
+      });
+    });
+};
+
 module.exports = {
   saveSession,
   getSession,
   getSessionByUuid,
   savePoll,
-  getPolls,
+	getPolls,
+	getSessionTypes,
 };

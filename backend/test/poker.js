@@ -221,5 +221,17 @@ describe.only("Poker", () => {
             done();
           });
       });
+	});
+
+	it("Fetch Session", (done) => {
+    chai
+      .request(app)
+      .get(`/poker/sessionTypes`)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body[0].title).to.be.oneOf(["Fibonacci", "T-Shirts"]);
+        expect(res.body[1].title).to.be.oneOf(["Fibonacci", "T-Shirts"]);
+        done();
+      });
   });
 });
