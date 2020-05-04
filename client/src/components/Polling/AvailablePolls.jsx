@@ -5,7 +5,7 @@ import Card from "components/Polling/Card";
 const SelectedPollSection = ({ pollType, setPolls }) => {
   return (
     <Row className="border rounded px-2 py-3">
-      {pollType === "fibonacci" && (
+      {pollType && pollType.toLowercase() === "fibonacci" && (
         <>
           <Card value="0" handleClick={setPolls} />
           <Card value="0.5" handleClick={setPolls} />
@@ -21,8 +21,8 @@ const SelectedPollSection = ({ pollType, setPolls }) => {
           <Card value="101" handleClick={setPolls} />
         </>
       )}
-      
-      {pollType === "t-shirt" && (
+
+      {pollType && pollType.toLowercase() === "t-shirts" && (
         <>
           <Card value="xs" handleClick={setPolls} />
           <Card value="sm" handleClick={setPolls} />

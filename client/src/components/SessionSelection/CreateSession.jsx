@@ -1,15 +1,25 @@
 import React, { Component } from "react";
 import uuid from "uuid/v4";
 import { Card, Button, Form } from "react-bootstrap";
-// import CreateImage from "assets/sessionSelection/undraw_data_processing.svg";
 
 class CreateSessionCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pollType: "fibonacci",
+      pollType: "",
     };
   }
+
+  componentDidUpdate = () => {
+    const { pollTypesList } = this.props;
+    const { pollType } = this.state;
+    if (
+      Array.isArray(pollTypesList) &&
+      pollTypesList.length > 0 &&
+      pollType === ""
+    )
+      this.setState({ pollType: pollTypesList[0].title });
+  };
 
   onChange = (e) => {
     const { value } = e.target;
@@ -19,21 +29,24 @@ class CreateSessionCard extends Component {
   };
 
   onSubmit = (e) => {
-		e.preventDefault();
-		const sessionId = uuid();
-		this.props.setPollType(this.state.pollType);
-		this.props.setSessionId(sessionId);
+    e.preventDefault();
+    const sessionId = uuid();
+    this.props.setPollType(this.state.pollType);
+    this.props.setSessionId(sessionId);
     this.props.history.push(`/create-session/${sessionId}`);
   };
 
   render() {
-    const { pollType } = this.state;
+		const { pollType } = this.state;
+    const { pollTypesList } = this.props;
     return (
       <Card className="text-center">
         <Card.Header as="h5">Create Session</Card.Header>
         <Card.Body>
           <div className="d-block mb-2">
-					<img src="http://via.placeholder.com/200x200" alt="create session"
+            <img
+              src="http://via.placeholder.com/200x200"
+              alt="create session"
             />
           </div>
           <Form onSubmit={this.onSubmit}>
@@ -43,8 +56,12 @@ class CreateSessionCard extends Component {
                 onChange={this.onChange}
                 value={pollType}
               >
-                <option value="fibonacci">Fibonacci</option>
-                <option value="t-shirt">T-Shirt</option>
+                {pollTypesList.length > 0 &&
+                  pollTypesList.map((poll) => (
+                    <option key={poll.id} value={poll.title}>
+                      {poll.title}
+                    </option>
+                  ))}
               </Form.Control>
             </Form.Group>
             <Button variant="primary" type="submit">
