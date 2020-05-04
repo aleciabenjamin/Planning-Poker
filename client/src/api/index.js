@@ -1,3 +1,4 @@
+import axios from "axios";
 import map from "lodash/map";
 import { reactLocalStorage } from "reactjs-localstorage";
 
@@ -58,4 +59,15 @@ export const pollToSession = (userName, sessionId, card) => {
     polls,
   };
   saveSession(sessionId, data);
+};
+
+export const fetchPollTypesList = () => {
+  return axios
+    .get("http://127.0.0.1:3001/poker/sessionTypes")
+    .then((resp) => {
+      return resp.data;
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
 };
