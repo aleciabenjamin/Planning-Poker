@@ -223,7 +223,7 @@ describe.only("Poker", () => {
       });
 	});
 
-	it("Fetch Session", (done) => {
+	it("Fetch a session type", (done) => {
     chai
       .request(app)
       .get(`/poker/sessionTypes`)

@@ -11,12 +11,12 @@ var {
 
 router.route("/").post(saveSession);
 
+router.route("/sessionTypes").get(getSessionTypes);
+
 router.route("/:id").get(getSession);
 
 router.route("/uuid/:uuid").get(getSessionByUuid);
 
 router.route("/:sessionId/poll").post(savePoll).get(getPolls);
-
-router.route("/sessionTypes").get(getSessionTypes);
 
 module.exports = router;
