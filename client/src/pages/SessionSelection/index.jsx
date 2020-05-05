@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   setPollType,
-  setSessionId,
+  setsessionUuId,
   fetchPollTypesListAction,
 } from "store/actions/polling";
 import CreateSessionCard from "components/SessionSelection/CreateSession";
@@ -12,7 +12,7 @@ import { Col, Row } from "react-bootstrap";
 const SessionSelection = ({
   history,
   setPollType,
-  setSessionId,
+  setsessionUuId,
   fetchPollTypesList,
   pollTypesList,
 }) => {
@@ -25,12 +25,12 @@ const SessionSelection = ({
         <CreateSessionCard
           history={history}
           setPollType={setPollType}
-          setSessionId={setSessionId}
+          setsessionUuId={setsessionUuId}
           pollTypesList={pollTypesList}
         />
       </Col>
       <Col sm="6">
-        <JoinSessionCard history={history} setSessionId={setSessionId} />
+        <JoinSessionCard history={history} setsessionUuId={setsessionUuId} />
       </Col>
     </Row>
   );
@@ -45,7 +45,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setPollType: (pollType) => dispatch(setPollType(pollType)),
-    setSessionId: (sessionId) => dispatch(setSessionId(sessionId)),
+    setsessionUuId: (sessionUuId) => dispatch(setsessionUuId(sessionUuId)),
     fetchPollTypesList: () => dispatch(fetchPollTypesListAction()),
   };
 };

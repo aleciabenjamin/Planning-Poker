@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 
-const JoinSessionCard = ({ history, setSessionId }) => {
-  const [sessionId, handleSessionId] = useState("");
+const JoinSessionCard = ({ history, setsessionUuId }) => {
+  const [sessionUuId, handlesessionUuId] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (sessionId !== "") {
-			setSessionId(sessionId);
-      history.push(`/join-session/${sessionId}`);
+    if (sessionUuId !== "") {
+			setsessionUuId(sessionUuId);
+      history.push(`/join-session/${sessionUuId}`);
     }
   };
   return (
@@ -20,15 +20,15 @@ const JoinSessionCard = ({ history, setSessionId }) => {
           <img src="http://via.placeholder.com/200x200" alt="join session" />
         </div>
         <Form onSubmit={handleSubmit}>
-          <Form.Group controlId="sessionId">
+          <Form.Group controlId="sessionUuId">
             <Form.Control
               required
 							type="text"
               placeholder="Enter Session ID"
               className="text-center"
-              value={sessionId}
+              value={sessionUuId}
               onChange={(e) => {
-                handleSessionId(e.target.value);
+                handlesessionUuId(e.target.value);
               }}
             />
           </Form.Group>

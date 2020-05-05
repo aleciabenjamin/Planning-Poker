@@ -2,20 +2,18 @@ import React, { useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 import * as API from "api";
 
-const CreateSessionForm = ({
-  history,
-  sessionUuid,
-  saveSession
-}) => {
+const CreateSessionForm = ({ history, saveSession }) => {
   const [sessionName, handleSessionName] = useState();
   const [userName, handleUserName] = useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (sessionName !== "" && userName !== "") {
-      saveSession(userName, sessionUuid, sessionName).then((sessionId) => {
-				history.push(`/polling/${sessionId}`);
-			})
+      saveSession(userName, sessionName).then((sessionUuId) => {
+        if (sessionUuId) {
+          history.push(`/polling/${sessionUuId}`);
+        }
+      });
     }
   };
   return (

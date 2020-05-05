@@ -9,25 +9,25 @@ import { Row, Col } from "react-bootstrap";
 import * as API from "api";
 import { useCallback } from "react";
 
-const Polling = ({ pollType, userName, sessionId, sessionName }) => {
+const Polling = ({ pollType, userName, sessionUuId, sessionName }) => {
 	const [polls, handlePolls] = useState([]);
   const handleCardSelection = (card) => {
-		API.pollToSession(userName, sessionId, card);
-		updatePolls(sessionId);
+		API.pollToSession(userName, sessionUuId, card);
+		updatePolls(sessionUuId);
 	};
-	const updatePolls = (sessionId) => {
-		if(sessionId) {
-			const session = API.getSession(sessionId);
+	const updatePolls = (sessionUuId) => {
+		if(sessionUuId) {
+			const session = API.getSession(sessionUuId);
 			handlePolls(session.polls);
 		}
 	};
 
 	const fetchPollData = useCallback(() => {
 		setTimeout(() => {
-			updatePolls(sessionId);
+			updatePolls(sessionUuId);
 			fetchPollData();
 		}, 500);
-	}, [sessionId]);
+	}, [sessionUuId]);
 
 	useEffect(() => {
 		if(!(Array.isArray(polls) && polls.length > 0)) fetchPollData();
@@ -48,7 +48,7 @@ const Polling = ({ pollType, userName, sessionId, sessionName }) => {
 	<h4 className="pt-2">{sessionName}</h4>
 				</Col>
         <Col sm="4">
-          <PollingLink sessionId={sessionId} />
+          <PollingLink sessionUuId={sessionUuId} />
         </Col>
       </Row>
       <Row className="h-100 mt-2">
@@ -65,11 +65,11 @@ const Polling = ({ pollType, userName, sessionId, sessionName }) => {
 };
 
 const mapStateToProps = (state) => {
-  const { pollType, userName, sessionId, polls, sessionName } = state.polling;
+  const { pollType, userName, sessionUuId, polls, sessionName } = state.polling;
   return {
     pollType,
     userName,
-    sessionId,
+    sessionUuId,
 		polls,
 		sessionName
   };

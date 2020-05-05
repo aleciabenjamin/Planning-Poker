@@ -11,7 +11,6 @@ const CreateSession = ({ history, match, pollType, saveSession }) => {
         <CreateSessionForm
           history={history}
           pollType={pollType}
-          sessionUuid={match.params.sessionId}
           saveSession={saveSession}
         />
       </Col>

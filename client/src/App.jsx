@@ -18,13 +18,13 @@ function App() {
     <Provider store={store}>
       <Router history={hist}>
         <Switch>
-          <Route path="/polling/:sessionId" component={AuthLayout(Polling)} />
+          <Route path="/polling/:sessionUuId" component={AuthLayout(Polling)} />
           <Route
-            path="/create-session/:sessionId"
+            path="/create-session/:sessionUuId"
             component={AuthLayout(CreateSession)}
           />
           <Route
-            path="/join-session/:sessionId"
+            path="/join-session/:sessionUuId"
             component={DefaultLayout(JoinSession)}
           />
           <Route path="/" component={DefaultLayout(SessionSelection)} />

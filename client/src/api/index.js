@@ -25,8 +25,8 @@ export const getSession = (uuid) => {
   return savedData && savedData[uuid] ? savedData[uuid] : null;
 };
 
-export const createSession = (userName, sessionName, sessionId, pollType) => {
-  saveSession(sessionId, {
+export const createSession = (userName, sessionName, sessionUuId, pollType) => {
+  saveSession(sessionUuId, {
     creator: userName,
     sessionName,
     pollType,
@@ -34,17 +34,17 @@ export const createSession = (userName, sessionName, sessionId, pollType) => {
   });
 };
 
-export const joinSession = (userName, sessionId) => {
-  const session = getSession(sessionId);
+export const joinSession = (userName, sessionUuId) => {
+  const session = getSession(sessionUuId);
   const data = {
     ...session,
     polls: [...session.polls, { userName, card: "" }],
   };
-  saveSession(sessionId, data);
+  saveSession(sessionUuId, data);
 };
 
-export const pollToSession = (userName, sessionId, card) => {
-  const session = getSession(sessionId);
+export const pollToSession = (userName, sessionUuId, card) => {
+  const session = getSession(sessionUuId);
   const polls = map(session.polls, (poll) => {
     if (poll.userName === userName) {
       return {
@@ -58,7 +58,7 @@ export const pollToSession = (userName, sessionId, card) => {
     ...session,
     polls,
   };
-  saveSession(sessionId, data);
+  saveSession(sessionUuId, data);
 };
 
 export const fetchPollTypesList = () => {
@@ -72,9 +72,15 @@ export const fetchPollTypesList = () => {
     });
 };
 
-export const savePollingSession = (userName, sessionName, pollTypeId) => {
+export const savePollingSession = (
+  userName,
+  sessionUuId,
+  sessionName,
+  pollTypeId
+) => {
   const apiPayload = {
-    title: sessionName,
+		title: sessionName,
+		uuid: sessionUuId,
     creatorName: userName,
     sessionTypeId: pollTypeId,
   };

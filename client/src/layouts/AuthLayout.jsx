@@ -7,15 +7,17 @@ import * as Action from "store/actions/polling";
 const AuthLayout = (PokerComponent) => {
   class Authentication extends React.Component {
     componentDidMount = () => {
-      let { pollType, userName, sessionId } = this.props;
+      let { pollType, userName, sessionUuId } = this.props;
       const { path } = this.props.match;
       switch (path) {
-        case "/create-session/:sessionId":
+        case "/create-session/:sessionUuId":
           break;
-        case "/join-session/:sessionId":
+        case "/join-session/:sessionUuId":
           break;
-        case "/polling/:sessionId":
-          if (!(Boolean(userName) && Boolean(pollType) && Boolean(sessionId))) {
+        case "/polling/:sessionUuId":
+          if (
+            !(Boolean(userName) && Boolean(pollType) && Boolean(sessionUuId))
+          ) {
             this.redirectToHome();
           }
           break;
@@ -35,10 +37,16 @@ const AuthLayout = (PokerComponent) => {
   }
 
   const mapStateToProps = (state) => {
-    const { pollType, sessionId, sessionName, userName, polls } = state.polling;
+    const {
+      pollType,
+      sessionUuId,
+      sessionName,
+      userName,
+      polls,
+    } = state.polling;
     return {
       pollType,
-      sessionId,
+      sessionUuId,
       sessionName,
       userName,
       polls,
@@ -46,8 +54,8 @@ const AuthLayout = (PokerComponent) => {
   };
 
   const mapDispatchToProps = (dispatch) => {
-    const { setPollType, setPolls, setSessionId, setSessionName } = Action;
-    return { setPollType, setPolls, setSessionId, setSessionName };
+    const { setPollType, setPolls, setsessionUuId, setSessionName } = Action;
+    return { setPollType, setPolls, setsessionUuId, setSessionName };
   };
 
   return Layout(connect(mapStateToProps, mapDispatchToProps)(Authentication));

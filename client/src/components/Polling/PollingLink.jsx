@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 
-const PollingLink = ({ sessionId }) => {
+const PollingLink = ({ sessionUuId }) => {
   return (
     <Form>
       <Form.Group controlId="pollingLink">
@@ -11,9 +11,10 @@ const PollingLink = ({ sessionId }) => {
           placeholder="Polling Link"
           className="text-center"
           readOnly={true}
-          value={`http://localhost:3000/join-session/${
-            sessionId ? sessionId : ""
-          }`}
+          //value={`http://localhost:3000/join-session/${
+            //sessionUuId ? sessionUuId : ""
+					//}`}
+					value={`${sessionUuId ? sessionUuId : "" }`}
         />
       </Form.Group>
     </Form>

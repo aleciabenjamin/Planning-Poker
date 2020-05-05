@@ -30,10 +30,10 @@ class CreateSessionCard extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const sessionUuid = uuid();
+    const sessionUuId = uuid();
     this.props.setPollType(this.state.pollType);
-    this.props.setSessionId(sessionUuid);
-    this.props.history.push(`/create-session/${sessionUuid}`);
+    this.props.setsessionUuId(sessionUuId);
+    this.props.history.push(`/create-session/${sessionUuId}`);
   };
 
   render() {
@@ -50,7 +50,7 @@ class CreateSessionCard extends Component {
             />
           </div>
           <Form onSubmit={this.onSubmit}>
-            <Form.Group controlId="sessionId">
+            <Form.Group controlId="sessionUuId">
               <Form.Control
                 as="select"
                 onChange={this.onChange}
