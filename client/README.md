@@ -1,57 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Planning Poker
 
 Planning poker, also called Scrum poker, is a consensus-based, gamified technique for estimating, mostly used to estimate effort or relative size of development goals in software development.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Clone the repository with an SSH key
+
+```
+git@github.com:aleciabenjamin/Planning-Poker.git
+```
+or with HTTPS
+```
+https://github.com/aleciabenjamin/Planning-Poker.git
+```
+Then install the ```node_modules``` with yarn
+```
+yarn install
+```
+or with npm
+```
+npm install
+```
+Run the start command and head over to [http://localhost:3000](http://localhost:3000)
+```
+yarn start
+```
+or
+```
+npm start
+```
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+[node v10.0.0](https://nodejs.org/en/download/)
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+Unit Tests with mocha and chai
 ```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+yarn test
 ```
 
 ## Deployment
@@ -60,17 +47,17 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [react](http://facebook.github.io/react/) - for managing the presentation logic of application
+* [redux](http://redux.js.org/) -  for generating and managing state model
+* [redux-thunk](https://www.npmjs.com/package/redux-thunk) - for redux middleware
+* [redux-router-dom](https://www.npmjs.com/package/react-router-dom) - for handling the page routing
+* [axios](https://www.npmjs.com/package/axios) for making AJAX calls to a server
+* [bootstrap](https://www.npmjs.com/package/bootstrap) for frontend template
+* [node-sass](https://npmjs.org/package/node-sass) for sass support
 
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 

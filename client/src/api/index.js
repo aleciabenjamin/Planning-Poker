@@ -71,3 +71,19 @@ export const fetchPollTypesList = () => {
       return Promise.reject(error);
     });
 };
+
+export const savePollingSession = (userName, sessionName, pollTypeId) => {
+  const apiPayload = {
+    title: sessionName,
+    creatorName: userName,
+    sessionTypeId: pollTypeId,
+  };
+  return axios
+    .post("http://127.0.0.1:3001/poker/", apiPayload)
+    .then((resp) => {
+      return resp.data;
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};

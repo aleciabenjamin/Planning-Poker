@@ -4,10 +4,8 @@ import * as API from "api";
 
 const CreateSessionForm = ({
   history,
-  sessionId,
-  setUserName,
-  setSessionName,
-  pollType,
+  sessionUuid,
+  saveSession
 }) => {
   const [sessionName, handleSessionName] = useState();
   const [userName, handleUserName] = useState();
@@ -15,10 +13,9 @@ const CreateSessionForm = ({
   const handleSubmit = (event) => {
     event.preventDefault();
     if (sessionName !== "" && userName !== "") {
-      setUserName(userName);
-      setSessionName(sessionName);
-      API.createSession(userName, sessionName, sessionId, pollType);
-      history.push(`/polling/${sessionId}`);
+      saveSession(userName, sessionUuid, sessionName).then((sessionId) => {
+				history.push(`/polling/${sessionId}`);
+			})
     }
   };
   return (

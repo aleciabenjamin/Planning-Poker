@@ -30,10 +30,10 @@ class CreateSessionCard extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const sessionId = uuid();
+    const sessionUuid = uuid();
     this.props.setPollType(this.state.pollType);
-    this.props.setSessionId(sessionId);
-    this.props.history.push(`/create-session/${sessionId}`);
+    this.props.setSessionId(sessionUuid);
+    this.props.history.push(`/create-session/${sessionUuid}`);
   };
 
   render() {
