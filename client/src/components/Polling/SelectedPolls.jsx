@@ -16,9 +16,9 @@ const SelectedPollSection = ({ polls, showCards }) => {
     });
 
   return (
-    <Row className="border rounded bg-secondary px-2 py-3 mb-2">
-      {pollsList}
-    </Row>
+    <div className="selected-polls">
+      <Row className="border rounded px-2 py-3 mb-2">{pollsList}</Row>
+    </div>
   );
 };
 

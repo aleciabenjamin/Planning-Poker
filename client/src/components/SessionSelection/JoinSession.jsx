@@ -6,7 +6,7 @@ const JoinSessionCard = ({ history, setsessionUuId }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (sessionUuId !== "") {
-			setsessionUuId(sessionUuId);
+      setsessionUuId(sessionUuId);
       history.push(`/join-session/${sessionUuId}`);
     }
   };
@@ -23,7 +23,7 @@ const JoinSessionCard = ({ history, setsessionUuId }) => {
           <Form.Group controlId="sessionUuId">
             <Form.Control
               required
-							type="text"
+              type="text"
               placeholder="Enter Session ID"
               className="text-center"
               value={sessionUuId}

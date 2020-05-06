@@ -52,7 +52,7 @@ const Card = ({ value, label, handleClick }) => {
             onClick={() => handleClick(value)}
           >
             {label !== "" && (
-              <p className="text-light mb-0 font-weight-bold"></p>
+              <p className="text-light mb-0 font-weight-bold">{label}</p>
             )}
             <img src={CardMapping[value]} alt="value" className="rounded" />
           </BSCard.Body>

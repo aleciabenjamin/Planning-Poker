@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
-import * as API from "api";
 
 const CreateSessionForm = ({ history, saveSession }) => {
-  const [sessionName, handleSessionName] = useState();
-  const [userName, handleUserName] = useState();
+  const [sessionName, handleSessionName] = useState("");
+  const [userName, handleUserName] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,7 +25,6 @@ const CreateSessionForm = ({ history, saveSession }) => {
             <Form.Control
               required
               type="text"
-              autoComplete={false}
               name="sessionName"
               placeholder="Enter session name"
               className="text-center"
@@ -39,7 +37,6 @@ const CreateSessionForm = ({ history, saveSession }) => {
             <Form.Control
               required
               type="text"
-              autoComplete={false}
               name="userName"
               placeholder="Enter your name"
               className="text-center"

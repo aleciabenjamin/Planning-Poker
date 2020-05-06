@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import * as API from "api";
-import { setSessionName } from "store/actions/polling";
 
-const JoinSessionForm = ({ history, sessionUuId, setUserName, setPollType }) => {
+const JoinSessionForm = ({
+  history,
+  sessionUuId,
+  setUserName,
+  setSessionName,
+  setPollType,
+}) => {
   const [userName, handleUserName] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (userName !== "") {
-			const session = API.getSession(sessionUuId);
-			setUserName(userName);
-			setSessionName(session.sessionName);
-			setPollType(session.pollType);
-			API.joinSession(userName, sessionUuId);
+      const session = API.getSession(sessionUuId);
+      setUserName(userName);
+      setSessionName(session.sessionName);
+      setPollType(session.pollType);
+      API.joinSession(userName, sessionUuId);
       history.push(`/polling/${sessionUuId}`);
     }
   };
@@ -26,8 +31,7 @@ const JoinSessionForm = ({ history, sessionUuId, setUserName, setPollType }) => 
             <Form.Label>Your Name</Form.Label>
             <Form.Control
               required
-							type="text"
-							autoComplete={false}
+              type="text"
               placeholder="Enter your name"
               className="text-center"
               value={userName}
