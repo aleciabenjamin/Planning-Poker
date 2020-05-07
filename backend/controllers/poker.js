@@ -49,19 +49,22 @@ const getSessionByUuid = (req, res, next) => {
 };
 
 const savePoll = (req, res, next) => {
-  const payload = {
-    userName: req.body.userName,
-    poll: req.body.poll,
-    sessionId: req.params.sessionId,
+  const { userName, poll } = req.body;
+  const { sessionId } = req.params;
+  const where = {
+    userName,
+    sessionId,
   };
-  return Polling.create(payload)
-    .then((data) => {
-      return res.json(data);
+  return Polling.findOne({ where })
+    .then((inst) => {
+      if (inst) {
+        return inst.update({ poll });
+      } else {
+        return Polling.create({ userName, poll, sessionId });
+      }
     })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while saving the Session.",
-      });
+    .then((resp) => {
+      return res.json(resp);
     });
 };
 
