@@ -1,24 +1,17 @@
 import React, { useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
-import * as API from "api";
 
 const JoinSessionForm = ({
   history,
   sessionUuId,
-  setUserName,
-  setSessionName,
-  setPollType,
+  setUserName
 }) => {
   const [userName, handleUserName] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (userName !== "") {
-      const session = API.getSession(sessionUuId);
       setUserName(userName);
-      setSessionName(session.sessionName);
-      setPollType(session.pollType);
-      API.joinSession(userName, sessionUuId);
       history.push(`/polling/${sessionUuId}`);
     }
   };

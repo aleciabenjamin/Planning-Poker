@@ -7,7 +7,11 @@ const SelectedPollSection = ({ polls, showCards }) => {
   if (Array.isArray(polls) && polls.length > 0)
     pollsList = polls.map(({ userName, poll }, i) => {
       return (
-        <Card key={i} value={showCards ? poll : "unknown"} label={userName} />
+        <Card
+          key={poll.id}
+          value={showCards ? poll : "unknown"}
+          label={userName}
+        />
       );
     });
 

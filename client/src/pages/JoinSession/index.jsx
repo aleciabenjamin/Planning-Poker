@@ -4,7 +4,7 @@ import { Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import {
   setPollType,
-  setsessionUuId,
+  setsessionByUuIdAction,
   setSessionName,
   setUserName,
 } from "store/actions/polling";
@@ -12,14 +12,14 @@ import {
 const JoinSession = ({
   history,
   match,
-  setsessionUuId,
+  setsessionByUuId,
   setUserName,
   setSessionName,
   setPollType,
 }) => {
   useEffect(() => {
-    setsessionUuId(match.params.sessionUuId);
-  }, [match.params.sessionUuId, setsessionUuId]);
+    setsessionByUuId(match.params.sessionUuId);
+  }, [match.params.sessionUuId, setsessionByUuId]);
   return (
     <Row className="align-items-center h-100 mt-5">
       <Col sm="6" className="mx-auto">
@@ -38,7 +38,7 @@ const JoinSession = ({
 const mapDispatchToProps = (dispatch) => {
   return {
     setUserName: (userName) => dispatch(setUserName(userName)),
-    setsessionUuId: (sessionUuId) => dispatch(setsessionUuId(sessionUuId)),
+    setsessionByUuId: (sessionUuId) => dispatch(setsessionByUuIdAction(sessionUuId)),
     setSessionName: (sessionName) => dispatch(setSessionName(sessionName)),
     setPollType: (pollType) => dispatch(setPollType(pollType)),
   };

@@ -4,10 +4,10 @@ import { Card, ListGroup } from "react-bootstrap";
 const MembersList = ({ polls }) => {
   let usersList = [];
   if (Array.isArray(polls) && polls.length > 0)
-    usersList = polls.map(({ userName, card }, i) => {
+    usersList = polls.map(({ userName, poll }, i) => {
       return (
-        <ListGroup.Item key={i}>
-          {card === "" ? (
+        <ListGroup.Item key={poll.id}>
+          {poll === "" ? (
             <span
               className="text-warning mr-2"
               role="img"

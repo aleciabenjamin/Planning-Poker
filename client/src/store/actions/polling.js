@@ -1,12 +1,12 @@
 import * as api from "api";
 import {
-  SET_SESSION_ID,
+  SET_POLLS,
   SET_POLL_TYPE,
+  SET_POLL_TYPES_LIST,
+  SET_SESSION_ID,
+  SET_SESSION_NAME,
   SET_SESSION_UUID,
   SET_USER_NAME,
-  SET_SESSION_NAME,
-  SET_POLLS,
-  SET_POLL_TYPES_LIST,
 } from "store/actions/types";
 
 export const setPollType = (pollType) => {
@@ -89,6 +89,21 @@ export const getSessionPollsAction = (sessionId) => (dispatch, getState) => {
     .getSessionPolls(sessionId)
     .then((apiResponse) => {
       return apiResponse;
+    })
+    .catch((apiError) => {
+      return Promise.reject(apiError);
+    });
+};
+
+export const setsessionByUuIdAction = (uuId) => (dispatch, getState) => {
+  return api
+    .getSessionByUuid(uuId)
+    .then((apiResponse) => {
+      dispatch(setSessionId(apiResponse.id));
+      dispatch(setsessionUuId(uuId));
+      dispatch(setSessionName(apiResponse.title));
+      dispatch(setPollType(apiResponse.SessionType.title));
+      return apiResponse.id;
     })
     .catch((apiError) => {
       return Promise.reject(apiError);

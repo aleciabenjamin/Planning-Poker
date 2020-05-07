@@ -119,3 +119,14 @@ export const getSessionPolls = (sessionId) => {
       return Promise.reject(error);
     });
 };
+
+export const getSessionByUuid = (uuid) => {
+  return axios
+    .get(`http://127.0.0.1:3001/poker/uuid/${uuid}`)
+    .then((resp) => {
+      return resp.data;
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};

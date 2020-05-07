@@ -1,7 +1,6 @@
 var { Session, SessionType, Polling } = require("../models");
 
 const saveSession = (req, res, next) => {
-  console.log(req.body);
   return Session.create(req.body)
     .then((data) => {
       return res.json(data);

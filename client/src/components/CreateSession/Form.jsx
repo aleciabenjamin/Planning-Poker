@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
 
 const CreateSessionForm = ({ history, saveSession }) => {
-  const [sessionName, handleSessionName] = useState("Session #1");
-  const [userName, handleUserName] = useState("Rick Sanchez");
+  const [sessionName, handleSessionName] = useState("");
+  const [userName, handleUserName] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
