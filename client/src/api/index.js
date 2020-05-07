@@ -79,13 +79,39 @@ export const savePollingSession = (
   pollTypeId
 ) => {
   const apiPayload = {
-		title: sessionName,
-		uuid: sessionUuId,
+    title: sessionName,
+    uuid: sessionUuId,
     creatorName: userName,
     sessionTypeId: pollTypeId,
   };
   return axios
     .post("http://127.0.0.1:3001/poker/", apiPayload)
+    .then((resp) => {
+      return resp.data;
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
+export const savePollToSession = (userName, poll, sessionId) => {
+  const payload = {
+    userName,
+    poll,
+  };
+  return axios
+    .post(`http://127.0.0.1:3001/poker/${sessionId}/poll`, payload)
+    .then((resp) => {
+      return resp.data;
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};
+
+export const getSessionPolls = (sessionId) => {
+  return axios
+    .get(`http://127.0.0.1:3001/poker/${sessionId}/poll`)
     .then((resp) => {
       return resp.data;
     })

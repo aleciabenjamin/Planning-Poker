@@ -21,7 +21,7 @@ const initialState = {
 function reducer(state = initialState, action) {
   switch (action.type) {
 		case SET_SESSION_ID:
-      state = { ...state, pollTypesList: action.pollTypesList };
+      state = { ...state, sessionId: action.sessionId };
 			break;
 		case SET_POLL_TYPES_LIST:
       state = { ...state, pollTypesList: action.pollTypesList };

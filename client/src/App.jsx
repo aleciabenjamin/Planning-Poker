@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "store/index";
-import createBrowserHistory from "history/createBrowserHistory";
+import {createBrowserHistory} from "history";
 import { Router, Switch, Route } from "react-router-dom";
 import DefaultLayout from "layouts/DefaultLayout";
 import AuthLayout from "layouts/AuthLayout";

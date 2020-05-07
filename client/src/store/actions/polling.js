@@ -1,8 +1,8 @@
 import * as api from "api";
 import {
-	SET_SESSION_ID,
-	SET_POLL_TYPE,
-	SET_SESSION_UUID,
+  SET_SESSION_ID,
+  SET_POLL_TYPE,
+  SET_SESSION_UUID,
   SET_USER_NAME,
   SET_SESSION_NAME,
   SET_POLLS,
@@ -66,5 +66,31 @@ export const saveSessionAction = (title, creatorName) => (
     })
     .catch((apiError) => {
       console.log(apiError);
+    });
+};
+
+export const savePollToSessionAction = (userName, poll) => (
+  dispatch,
+  getState
+) => {
+  const { sessionId } = getState().polling;
+  return api
+    .savePollToSession(userName, poll, sessionId)
+    .then((apiResponse) => {
+      return apiResponse.id;
+    })
+    .catch((apiError) => {
+      console.log(apiError);
+    });
+};
+
+export const getSessionPollsAction = (sessionId) => (dispatch, getState) => {
+  return api
+    .getSessionPolls(sessionId)
+    .then((apiResponse) => {
+      return apiResponse;
+    })
+    .catch((apiError) => {
+      return Promise.reject(apiError);
     });
 };
