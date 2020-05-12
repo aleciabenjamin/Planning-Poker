@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Button, Form } from "react-bootstrap";
-
+import join from "assets/pokerCards/planning poker_join.svg";
 const JoinSessionCard = ({ history, setsessionUuId }) => {
   const [sessionUuId, handlesessionUuId] = useState("");
   const handleSubmit = (event) => {
@@ -17,7 +17,7 @@ const JoinSessionCard = ({ history, setsessionUuId }) => {
       </Card.Header>
       <Card.Body className="text-center">
         <div className="d-block mb-2">
-          <img src="http://via.placeholder.com/200x200" alt="join session" />
+          <img className="cover-cards" src={join} alt="join session"/>
         </div>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="sessionUuId">

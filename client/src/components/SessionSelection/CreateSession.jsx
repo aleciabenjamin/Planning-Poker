@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import uuid from "uuid/v4";
 import { Card, Button, Form } from "react-bootstrap";
+import cover from "assets/pokerCards/Cover option.svg";
+
 
 class CreateSessionCard extends Component {
   constructor(props) {
@@ -44,8 +46,8 @@ class CreateSessionCard extends Component {
         <Card.Header as="h5">Create Session</Card.Header>
         <Card.Body>
           <div className="d-block mb-2">
-            <img
-              src="http://via.placeholder.com/200x200"
+            <img className="cover-cards"
+              src={cover}
               alt="create session"
             />
           </div>

@@ -14,7 +14,9 @@ nav {
     &:hover {
       text-decoration: none;
       color: #6e6160;
-    }
+		}
+		font-family: "Architects Daughter", cursive;
+		margin: 0 auto;
   }
   // &::after {
   //   background-position: right center;
@@ -38,13 +40,20 @@ nav {
 	overflow-y: auto;
 }
 
-// .card-header {
-// 	background-color: rgb(248, 187, 154);
-// }
+ .card-header {
+	 background-color: rgb(248, 187, 154);
+	 font-family: "Architects Daughter", cursive;
+
+ }
 
 .btn-primary {
+	font-family: "Architects Daughter", cursive;
   background-color:#D1BEC4 !important;
   border-color: #F5DEE6 !important;
   min-width: 100px;
+}
+
+.cover-cards {
+	height: 32vh;
 }
 

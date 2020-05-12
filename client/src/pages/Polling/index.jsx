@@ -31,7 +31,10 @@ class Polling extends Component {
   setPolls = (polls) => this.setState({ polls });
 
   initiateRecursivePolls = () => {
-    this.interval = setTimeout(this.updatePolls, 3000);
+    this.interval = setTimeout(() => {
+			this.updatePolls();
+			this.initiateRecursivePolls();
+		}, 3000);
   };
 
   updatePolls = () => {
