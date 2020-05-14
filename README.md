@@ -22,12 +22,22 @@ or with npm
 npm install
 ```
 Run the start command and head over to [http://localhost:3000](http://localhost:3000)
+
+frontend:
 ```
 yarn start
 ```
 or
 ```
 npm start
+```
+backend:
+```
+yarn dev
+```
+or
+```
+npm dev
 ```
 
 ### Prerequisites
