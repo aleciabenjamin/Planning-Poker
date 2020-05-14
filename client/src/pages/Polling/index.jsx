@@ -46,10 +46,6 @@ class Polling extends Component {
 
   handleCardSelection = (card) => {
     const { savePollToSession, userName } = this.props;
-    if (this.hasPolled()) {
-      alert("You have already selected your card");
-      return;
-    }
     savePollToSession(userName, card).then((poll) => {
       this.updatePolls();
     });

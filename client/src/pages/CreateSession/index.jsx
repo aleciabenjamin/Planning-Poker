@@ -4,7 +4,7 @@ import { saveSessionAction } from "store/actions/polling";
 import CreateSessionForm from "components/CreateSession/Form";
 import { Row, Col } from "react-bootstrap";
 
-const CreateSession = ({ history, match, pollType, saveSession }) => {
+const CreateSession = ({ history, pollType, saveSession }) => {
   return (
     <Row className="align-items-center h-100 mt-5">
       <Col sm="6" className="mx-auto">
