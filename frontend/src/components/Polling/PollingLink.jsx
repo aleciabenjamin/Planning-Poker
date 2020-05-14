@@ -11,8 +11,8 @@ const PollingLink = ({ sessionUuId }) => {
           placeholder="Polling Link"
           className="text-center"
           readOnly={true}
-          //value={`http://localhost:3000/join-session/${
-            //sessionUuId ? sessionUuId : ""
+          //value={`https://aleciabenjamin.github.io/join-session/${
+          //sessionUuId ? sessionUuId : ""
 					//}`}
 					value={`${sessionUuId ? sessionUuId : "" }`}
         />
