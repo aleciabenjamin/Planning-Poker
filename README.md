@@ -2,6 +2,7 @@
 
 Planning poker, also called Scrum poker, is a consensus-based, gamified technique for estimating, mostly used to estimate effort or relative size of development goals in software development.
 
+![](https://raw.githubusercontent.com/aleciabenjamin/Planning-Poker/development/client/src/assets/projectImage.png)
 
 ## Getting Started
 
