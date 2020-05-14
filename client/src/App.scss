@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@1,500&display=swap');
+
+
 body {
   font-family: "Architects Daughter", cursive;
-  background-image: url("https://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-56.jpg");
+	background-image:url("./assets/cool-background.png");
   background-position: center;
   background-repeat: repeat;
 }
@@ -55,5 +58,10 @@ nav {
 
 .cover-cards {
 	height: 32vh;
+}
+
+.sessionName {
+	font-family: 'DM Mono', monospace;
+
 }
 
