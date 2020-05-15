@@ -64,6 +64,9 @@ yarn test
 * [axios](https://www.npmjs.com/package/axios) for making AJAX calls to a server
 * [bootstrap](https://www.npmjs.com/package/bootstrap) for frontend template
 * [node-sass](https://npmjs.org/package/node-sass) for sass support
+* [postgresql](https://www.postgresql.org/) for database management
+* [sequelize](https://sequelize.org/) for object relational mapping
+* [expressjs](https://expressjs.com/) to provide a basckend api service.
 
 ## How Does It Work?
 
