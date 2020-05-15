@@ -54,9 +54,6 @@ Unit Tests with mocha and chai
 yarn test
 ```
 
-## Deployment
-
-
 
 ## Built With
 
