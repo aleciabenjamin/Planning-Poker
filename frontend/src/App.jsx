@@ -11,7 +11,7 @@ import CreateSession from "pages/CreateSession";
 import Polling from "pages/Polling";
 import "./App.scss";
 
-const hist = createBrowserHistory({ basename: process.env.PUBLIC_URL });
+const hist = createBrowserHistory();
 
 function App() {
   return (
