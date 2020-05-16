@@ -56,17 +56,18 @@ export const saveSessionAction = (title, creatorName) => (
   const selectedPoll = pollTypesList.find(
     (poll) => poll.title.toLowerCase() === pollType.toLowerCase()
   );
-  return api
-    .savePollingSession(title, sessionUuId, creatorName, selectedPoll.id)
-    .then((apiResponse) => {
-      dispatch(setSessionId(apiResponse.id));
-      dispatch(setUserName(apiResponse.creatorName));
-      dispatch(setSessionName(apiResponse.title));
-      return apiResponse.uuid;
-    })
-    .catch((apiError) => {
-      console.log(apiError);
-    });
+  if (selectedPoll && selectedPoll.id)
+    return api
+      .savePollingSession(title, sessionUuId, creatorName, selectedPoll.id)
+      .then((apiResponse) => {
+        dispatch(setSessionId(apiResponse.id));
+        dispatch(setUserName(apiResponse.creatorName));
+        dispatch(setSessionName(apiResponse.title));
+        return apiResponse.uuid;
+      })
+      .catch((apiError) => {
+        console.log(apiError);
+      });
 };
 
 export const savePollToSessionAction = (userName, poll) => (
