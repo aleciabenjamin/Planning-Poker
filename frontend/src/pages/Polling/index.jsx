@@ -32,9 +32,9 @@ class Polling extends Component {
 
   initiateRecursivePolls = () => {
     this.interval = setTimeout(() => {
-			this.updatePolls();
-			this.initiateRecursivePolls();
-		}, 3000);
+      this.updatePolls();
+      this.initiateRecursivePolls();
+    }, 3000);
   };
 
   updatePolls = () => {
@@ -45,10 +45,12 @@ class Polling extends Component {
   };
 
   handleCardSelection = (card) => {
-    const { savePollToSession, userName } = this.props;
-    savePollToSession(userName, card).then((poll) => {
-      this.updatePolls();
-    });
+    if (typeof card !== "undefined") {
+      const { savePollToSession, userName } = this.props;
+      savePollToSession(userName, card).then((poll) => {
+        this.updatePolls();
+      });
+    }
   };
 
   hasPolled = () => {
@@ -56,7 +58,7 @@ class Polling extends Component {
     const { userName } = this.props;
     if (Array.isArray(polls) && polls.length > 0) {
       const userPoll = polls.find((poll) => poll.userName === userName);
-      return userPoll.poll !== "" ? true : false;
+      return userPoll && userPoll.poll !== "" ? true : false;
     }
     return false;
   };

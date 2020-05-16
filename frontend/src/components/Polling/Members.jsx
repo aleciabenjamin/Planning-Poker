@@ -6,7 +6,7 @@ const MembersList = ({ polls }) => {
   if (Array.isArray(polls) && polls.length > 0)
     usersList = polls.map(({ userName, poll }, i) => {
       return (
-        <ListGroup.Item key={poll.id}>
+        <ListGroup.Item key={i}>
           {poll === "" ? (
             <span
               className="text-warning mr-2"
