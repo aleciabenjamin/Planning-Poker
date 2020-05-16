@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "alecia",
-    "password": "",
+    "password": "alecia123",
     "database": "ppoker",
     "host": "127.0.0.1",
 		"dialect": "postgres",
@@ -10,7 +10,7 @@
   },
   "test": {
     "username": "alecia",
-    "password": "",
+    "password": "alecia123",
     "database": "ppoker",
     "host": "127.0.0.1",
 		"dialect": "postgres",
@@ -18,11 +18,12 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "alecia",
+    "password": "",
+    "database": "ppoker",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+		"dialect": "postgres",
+		"port": 5432,
     "operatorsAliases": false
   }
 }
