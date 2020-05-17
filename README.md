@@ -52,20 +52,21 @@ Create a new role (e.g.):
 ```
 $ CREATE USER name WITH PASSWORD 'password'
 ```
-Update the config.json file with your credentials.
-
-Then Create a database with a name of your choosing
+To quit the postgres interactive terminal
 ```
-$ postgres=# CREATE DATABASE dbname
+$ postgres=# \q
+```
+Update the config.json file with your credentials (i.e. username and password).
+
+Then create the database
+```
+$ sequelize db:create
 ```
 Run the database migration
 ```
 $ sequelize db:migrate
 ```
-To quit the postgres interactive terminal
-```
-$ postgres=# \q
-```
+
 more information on Sequelize ORM [here](https://sequelize.org/master/manual/migrations.html) and PostgreSQL [here](https://www.postgresql.org/docs/9.3/sql-createrole.html)
 
 
