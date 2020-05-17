@@ -40,16 +40,33 @@ $ npm install
 ```
 
 ### Database Configuration
-Create database
+In the backend directory configure the database credentials by opening the PostgreSQL interactive terminal:
 ```
-$ sequelize db:create
+$ psql postgres
+```
+To see a list of the users and roles:
+```
+$ postgres=# \du
+```
+Create a new role (e.g.):
+```
+$ CREATE USER name WITH PASSWORD 'password'
+```
+Update the config.json file with your credentials.
+
+Then Create a database with a name of your choosing
+```
+$ postgres=# CREATE DATABASE dbname
 ```
 Run the database migration
 ```
 $ sequelize db:migrate
 ```
-
-more information [here](https://sequelize.org/master/manual/migrations.html)
+To quit the postgres interactive terminal
+```
+$ postgres=# \q
+```
+more information on Sequelize ORM [here](https://sequelize.org/master/manual/migrations.html) and PostgreSQL [here](https://www.postgresql.org/docs/9.3/sql-createrole.html)
 
 
 Run the start command in the backend directory first, followed by frontend directory and head over to [http://localhost:3000](http://localhost:3000)
@@ -72,7 +89,7 @@ $ npm start
 
 ## Running the tests
 
-Automated testing performed with [mocha](https://mochajs.org/) and [chai](https://www.chaijs.com/) using the [chai-http](https://www.chaijs.com/plugins/chai-http/) module to make HTTP Requests.
+Automated testing performed with [mocha](https://mochajs.org/), [chai](https://www.chaijs.com/) and [faker](https://www.npmjs.com/package/faker) using the [chai-http](https://www.chaijs.com/plugins/chai-http/) module to make HTTP Requests.
 ```
 $ yarn test
 ```
@@ -84,7 +101,7 @@ $ yarn test
 * [redux-thunk](https://www.npmjs.com/package/redux-thunk) - for redux middleware
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom) - for handling the page routing
 * [axios](https://www.npmjs.com/package/axios) for making AJAX calls to a server
-* [bootstrap](https://www.npmjs.com/package/bootstrap) for frontend template
+* [react-bootstrap](https://react-bootstrap.github.io/) for frontend template
 * [node-sass](https://npmjs.org/package/node-sass) for sass support
 * [postgresql](https://www.postgresql.org/) for database management
 * [sequelize](https://sequelize.org/) for object relational mapping
