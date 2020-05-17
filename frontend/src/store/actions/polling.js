@@ -66,7 +66,8 @@ export const saveSessionAction = (title, creatorName) => (
         return apiResponse.uuid;
       })
       .catch((apiError) => {
-        console.log(apiError);
+				console.log(apiError);
+				return Promise.reject(false);
       });
 };
 

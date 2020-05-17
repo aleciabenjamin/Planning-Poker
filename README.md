@@ -4,6 +4,10 @@ Planning poker, also called Scrum poker, is a consensus-based, gamified techniqu
 
 ![](https://raw.githubusercontent.com/aleciabenjamin/Planning-Poker/master/frontend/src/assets/projectImage.png)
 
+### Prerequisites
+
+- [node v10.0.0](https://nodejs.org/en/download/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## Getting Started
 
@@ -16,7 +20,17 @@ or with HTTPS
 ```
 $ git clone https://github.com/aleciabenjamin/Planning-Poker.git
 ```
-Then install the ```node_modules``` with yarn
+## Installing
+
+Install [Sequelize CLI](https://github.com/sequelize/cli) in the backend directory with yarn
+```
+$ yarn add --dev sequelize-cli
+```
+or with npm
+```
+$ npm install --save-dev sequelize-cli
+```
+Then install the ```node_modules``` in both frontend and backend directories with yarn
 ```
 $ yarn install
 ```
@@ -24,7 +38,19 @@ or with npm
 ```
 $ npm install
 ```
-in frontend and backend directories.
+
+### Database Configuration
+Create database
+```
+$ sequelize db:create
+```
+Run the database migration
+```
+$ sequelize db:migrate
+```
+
+more information [here](https://sequelize.org/master/manual/migrations.html)
+
 
 Run the start command in the backend directory first, followed by frontend directory and head over to [http://localhost:3000](http://localhost:3000)
 backend:
@@ -44,59 +70,13 @@ or
 $ npm start
 ```
 
-
-### Prerequisites
-
-- [node v10.0.0](https://nodejs.org/en/download/)
-- [PostgreSQL](https://www.postgresql.org/)
-
 ## Running the tests
 
 Automated testing performed with [mocha](https://mochajs.org/) and [chai](https://www.chaijs.com/) using the [chai-http](https://www.chaijs.com/plugins/chai-http/) module to make HTTP Requests.
 ```
 $ yarn test
 ```
-### Database Configuration
-Enter the PostgreSQL interactive terminal in the CLI
-```
-$ psql postgres
-```
-For a list of existing roles:
-```
-$ postgres=# \du
-```
-To create a user with password
-```
-$ postgres=# CREATE USER <name> WITH PASSWORD '<password>';
-```
-To create a role
-```
-$ postgres=# CREATE ROLE name [ [ WITH ] option [ ... ] ]
-```
-where option can be
-```
-SUPERUSER | NOSUPERUSER
-    | CREATEDB | NOCREATEDB
-    | CREATEROLE | NOCREATEROLE
-    | CREATEUSER | NOCREATEUSER
-    | INHERIT | NOINHERIT
-    | LOGIN | NOLOGIN
-    | REPLICATION | NOREPLICATION
-    | CONNECTION LIMIT connlimit
-    | [ ENCRYPTED | UNENCRYPTED ] PASSWORD 'password'
-    | VALID UNTIL 'timestamp'
-    | IN ROLE role_name [, ...]
-    | IN GROUP role_name [, ...]
-    | ROLE role_name [, ...]
-    | ADMIN role_name [, ...]
-    | USER role_name [, ...]
-    | SYSID uid
-```
-Exit psql
-```
-postgres=# \q
-```
-more information [here](https://www.postgresql.org/docs/8.1/user-manag.html)
+
 ## Built With
 
 * [react](http://facebook.github.io/react/) - for managing the presentation logic of application
